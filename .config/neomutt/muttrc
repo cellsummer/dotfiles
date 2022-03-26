@@ -1,0 +1,43 @@
+# vim: filetype=muttrc
+
+source ~/.config/neomutt/settings
+source ~/.config/neomutt/colors
+source ~/.config/neomutt/mappings
+
+# Accounts
+source ~/.config/neomutt/accounts/yahoo
+#folder-hook $folder 'source ~/.config/neomutt/accounts/yahoo'
+
+# Hotmail config
+#set from = "cellsummer@hotmail.com"
+#set realname = "Wenjing Fang"
+#set imap_user = "cellsummer@hotmail.com"
+#set folder = "imaps://outlook.office365.com:993"
+#set spoolfile = "+INBOX"
+#set postponed = "Draft"
+#set smtp_url = "smtp-mail.outlook.com:587"
+#set header_cache =~/.mutt/cache/headers
+#set message_cachedir =~/.mutt/cache/bodies
+#set certificate_file =~/.mutt/certificates
+
+# encrypted IMAP/SMTP passwords
+#source "gpg -d ~/.config/neomutt/password.gpg |"
+
+# Yahoo config
+#set ssl_starttls = no
+##set ssl_force_tls = yes
+#set from = "fang.wenjing@yahoo.com"
+#set realname = "Wenjing Fang"
+#set imap_user = "fang.wenjing@yahoo.com"
+#set folder = "imaps://imap.mail.yahoo.com:993"
+#set spoolfile = "+INBOX"
+#set postponed = "Draft"
+#set smtp_url = "smtp://fang.wenjing@smtp.mail.yahoo.com:587/"
+#set smtp_pass = 'bipyxiqsiktqygzg'
+#set imap_pass = 'bipyxiqsiktqygzg'
+#set header_cache =~/.mutt/cache/headers
+#set message_cachedir =~/.mutt/cache/bodies
+#set certificate_file =~/.mutt/certificates
+
+## auto convert text/html MIME type to text/plain
+#auto_view text/html

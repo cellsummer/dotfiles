@@ -1,0 +1,34 @@
+# vim: filetype=muttrc
+#
+# Yahoo config
+
+set ssl_starttls = no
+#set ssl_force_tls = yes
+set from = "fang.wenjing@yahoo.com"
+set envelope_from
+set use_from = "yes"
+
+set realname = "Wenjing Fang"
+set imap_user = "fang.wenjing@yahoo.com"
+set folder = "imaps://imap.mail.yahoo.com:993"
+
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set trash = "+Trash"
+set postponed = "+Draft"
+
+set smtp_url = "smtp://fang.wenjing@smtp.mail.yahoo.com:587/"
+set smtp_pass = 'bipyxiqsiktqygzg'
+set imap_pass = 'bipyxiqsiktqygzg'
+
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+
+mailboxes =INBOX =Sent =Trash =Draft
+
+# auto convert text/html MIME type to text/plain
+#auto_view text/html
+
+## Hook -- IMPORTANT!
+#"account-hook $folder "set imap_pass=SOME_PASSWORD"
