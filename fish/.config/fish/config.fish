@@ -225,12 +225,12 @@ alias .5='cd ../../../../..'
 
 # vim and emacs
 alias vim='nvim'
-alias em='/usr/bin/emacs -nw'
-alias emacs="emacsclient -c -a 'emacs'"
-alias doomsync="~/.emacs.d/bin/doom sync"
-alias doomdoctor="~/.emacs.d/bin/doom doctor"
-alias doomupgrade="~/.emacs.d/bin/doom upgrade"
-alias doompurge="~/.emacs.d/bin/doom purge"
+# alias em='/usr/bin/emacs -nw'
+# alias emacs="emacsclient -c -a 'emacs'"
+# alias doomsync="~/.emacs.d/bin/doom sync"
+# alias doomdoctor="~/.emacs.d/bin/doom doctor"
+# alias doomupgrade="~/.emacs.d/bin/doom upgrade"
+# alias doompurge="~/.emacs.d/bin/doom purge"
 
 # Changing "ls" to "exa"
 # alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -334,14 +334,14 @@ alias tips="lbrynet txo spend --type=support --is_not_my_input --blocking"
 
 ### DTOS ###
 # Copy/paste all content of /etc/dtos over to home folder. A backup of config is created. (Be careful running this!)
-alias dtoscopy='[ -d ~/.config ] || mkdir ~/.config && cp -Rf ~/.config ~/.config-backup-(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/dtos/* ~'
+# alias dtoscopy='[ -d ~/.config ] || mkdir ~/.config && cp -Rf ~/.config ~/.config-backup-(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/dtos/* ~'
 # Backup contents of /etc/dtos to a backup folder in $HOME.
-alias dtosbackup='cp -Rf /etc/dtos ~/dtos-backup-(date +%Y.%m.%d-%H.%M.%S)'
+# alias dtosbackup='cp -Rf /etc/dtos ~/dtos-backup-(date +%Y.%m.%d-%H.%M.%S)'
 
 ### RANDOM COLOR SCRIPT ###
 # Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
 # Or install it from the Arch User Repository: shell-color-scripts
-colorscript -e 22
+# colorscript -e 22
 
 ### SETTING THE STARSHIP PROMPT ###
-starship init fish | source
+# starship init fish | source
