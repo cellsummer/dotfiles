@@ -1,6 +1,12 @@
 
 " autocmd
+" python
 autocmd FileType python nnoremap <buffer> <F5> :update<bar>!python %<CR>
+autocmd FileType python nnoremap <buffer> <F6> :update<bar>!black -q %<CR>
+
+" Golang
+autocmd FileType go nnoremap <buffer> <F5> :update<bar>!go run %<CR>
+
 autocmd BufNewFile,BufRead *.vb set ft=vbnet
 "stop auto commenting
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

@@ -21,6 +21,7 @@ vim.g.maplocalleader = " "
 keymap("n", "<S-e>", "$", opts)
 keymap("n", "<S-b>", "^", opts)
 keymap("n", "<S-y>", "yg_", opts)
+keymap("n", "c", "\"_c", opts)
 
 -- remap j/k to gj/gk
 keymap("n", "j", "gj", opts)
@@ -95,6 +96,9 @@ keymap("i", "<C-v>", "<C-r>*<ESC>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Perform dot commands over visual blocks:
+keymap("v", ".", ":norm .<CR>", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>gv=gv", opts)
