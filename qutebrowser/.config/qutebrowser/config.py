@@ -45,10 +45,10 @@ config.bind("<y><o>", "yank inline [{title}]({url})")
 # }}}
 # ====================== Open Notes From Qutebrowser ====== {{{
 notecmd = "yank inline [{title}]({url});; spawn " +\
-        os.environ["TERMINAL"] + " -e " + os.environ["EDITOR"] + \
+        "lxterminal -e nvim"  \
         " -c 'call CreateCapture(\"e\" , \"qutebrowser\")'"
 
-addnote = "spawn " + os.environ['TERMINAL'] + " -e zsh -c 'echo \"* [ ] [{title}]({url})\" >> ~/vimwiki/WebNotes.md'"
+addnote = "spawn lxterminal" " -e zsh -c 'echo \"* [ ] [{title}]({url})\" >> ~/vimwiki/WebNotes.md'"
 config.bind("gn", addnote)
 
 # Aliases for commands. The keys of the given dictionary are the
@@ -202,29 +202,13 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
-# Allow websites to show notifications.
-# Type: BoolAsk
-# Valid values:
-#   - true
-#   - false
-#   - ask
-config.set('content.notifications.enabled', True, 'https://www.reddit.com')
-
-# Allow websites to show notifications.
-# Type: BoolAsk
-# Valid values:
-#   - true
-#   - false
-#   - ask
-config.set('content.notifications.enabled', True, 'https://www.youtube.com')
-
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
 # Type: Directory
 c.downloads.location.directory = '~/Downloads'
 
 # default zoom level
-c.zoom.default = '125%'
+c.zoom.default = '100%'
 
 # When to show the tab bar.
 # Type: String
@@ -237,8 +221,8 @@ c.tabs.show = 'always'
 
 # Setting default page for when opening new tabs or new windows with
 # commands like :open -t and :open -w .
-c.url.default_page = 'file:///home/wfang/Repos/startpage/index.html'
-c.url.start_pages = 'file:///home/wfang/Repos/startpage/index.html'
+c.url.default_page = 'https://google.com'
+c.url.start_pages = 'https://google.com'
 
 # Search engines which can be used via the address bar.  Maps a search
 # engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
@@ -400,15 +384,15 @@ c.fonts.default_family = '"Hack Nerd Font"'
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
-c.fonts.default_size = '14pt'
+c.fonts.default_size = '12pt'
 
 # Font used in the completion widget.
 # Type: Font
-c.fonts.completion.entry = '14pt "Hack Nerd Font"'
+c.fonts.completion.entry = '12pt "Hack Nerd Font"'
 
 # Font used for the debugging console.
 # Type: Font
-c.fonts.debug_console = '14pt "Hack Nerd Font"'
+c.fonts.debug_console = '12pt "Hack Nerd Font"'
 
 # Font used for prompts.
 # Type: Font
@@ -416,7 +400,7 @@ c.fonts.prompts = 'default_size sans-serif'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = '14pt "Hack Nerd Font"'
+c.fonts.statusbar = '12pt "Hack Nerd Font"'
 
 # Bindings to use dmenu rather than qutebrowser's builtin search.
 #config.bind('o', 'spawn --userscript dmenu-open')
