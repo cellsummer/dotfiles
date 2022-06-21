@@ -59,7 +59,10 @@ return packer.startup(function(use)
 
   --use { 'vim-airline/vim-airline'}
   --use { 'vim-airline/vim-airline-themes'}
-  -- use { 'kien/ctrlp.vim'}
+  use ({
+    "catppuccin/nvim",
+    as = "catppuccin"
+  })
   use { 'vimwiki/vimwiki'}
   use { 'godlygeek/tabular'}
   --use { 'preservim/nerdcommenter'}
