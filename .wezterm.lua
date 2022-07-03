@@ -2,9 +2,20 @@ local wezterm = require 'wezterm';
 local act = wezterm.action
 
 return {
- default_prog = {"c:/Program Files/WindowsApps/Microsoft.PowerShell_7.1.3.0_x64__8wekyb3d8bbwe/pwsh.exe", "-noLogo"},
- font = wezterm.font("JetBrains Mono"),
- color_scheme = "tokyonight",
+    default_prog = {
+        "c:/Program Files/WindowsApps/Microsoft.PowerShell_7.1.3.0_x64__8wekyb3d8bbwe/pwsh.exe",
+        "-noLogo"
+    },
+ -- Appearance
+    default_cursor_style = "BlinkingBar",
+    font = wezterm.font("Hack"),
+    color_scheme = "tokyonight",
+    inactive_pane_hsb = {
+        saturation = 0.8,
+        brightness = 0.4,
+  },
+
+-- Keybindings
 keys = {
     -- activate pane selection mode with the default alphabet (labels are "a", "s", "d", "f" and so on)
     {key="8", mods="CTRL", action=act.PaneSelect},
@@ -35,6 +46,9 @@ keys = {
     -- This will create a new split and run your default program inside it
     {key="+", mods="ALT|SHIFT",
       action=wezterm.action.SplitHorizontal{domain="CurrentPaneDomain"}},
+
+    {key="d", mods="ALT|SHIFT",
+      action=wezterm.action.SplitVertical{domain="CurrentPaneDomain"}},
 
     -- Create a new tab in the same domain as the current pane.
     {key="Enter", mods="ALT", action=act.SpawnTab("CurrentPaneDomain")},
