@@ -46,22 +46,25 @@ return packer.startup(function(use)
   use { "nvim-lua/plenary.nvim" }
   -- colors and themes
   use { 'xiyaowong/nvim-transparent' }
-  use { 'preservim/nerdtree'}
+  -- use { 'preservim/nerdtree'}
   use { 'joshdick/onedark.vim'}
   use { 'folke/tokyonight.nvim'}
-  use { 'EdenEast/nightfox.nvim'}
   use { 'justinmk/vim-sneak'}
   use { 'tpope/vim-surround'}
   use { 'jiangmiao/auto-pairs'}
-  use { 'vim-airline/vim-airline'}
-  use { 'vim-airline/vim-airline-themes'}
-  use { 'ayu-theme/ayu-vim'}
+  use {'kyazdani42/nvim-web-devicons'}
+  use {'kyazdani42/nvim-tree.lua'}
+  use {'nvim-lualine/lualine.nvim'}
+  use {'akinsho/bufferline.nvim'}
+
+  --use { 'vim-airline/vim-airline'}
+  --use { 'vim-airline/vim-airline-themes'}
   -- use { 'kien/ctrlp.vim'}
   use { 'vimwiki/vimwiki'}
   use { 'godlygeek/tabular'}
-  use { 'preservim/nerdcommenter'}
+  --use { 'preservim/nerdcommenter'}
+  use { 'terrortylor/nvim-comment'}
   --use { 'mhinz/vim-startify'}
-  use { 'mhinz/vim-janah'}
   use { 'chrisbra/csv.vim'}
   -- LSP
   use { 'neovim/nvim-lspconfig'}
@@ -85,6 +88,9 @@ return packer.startup(function(use)
       }
   -- Git
   use "lewis6991/gitsigns.nvim"
+  -- Leap
+  use 'ggandor/leap.nvim'
+
   -- Quarto
   --use 'vim-pandoc/vim-pandoc'
   --use 'vim-pandoc/vim-pandoc-sytnax'
@@ -95,3 +101,4 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
+

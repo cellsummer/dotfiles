@@ -24,13 +24,40 @@ local opts = {
 }
 
 vim.opt.shortmess:append("c")
+vim.opt.clipboard:append("unnamedplus")
+vim.opt.iskeyword:append("-")
 
 for k, v in pairs(opts) do
 	vim.opt[k] = v
 end
 
-vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set clipboard+=unnamedplus]])
+-- Plugin Options
+require("bufferline").setup()
+require("nvim-tree").setup({
+  git = { enable = true },
+  update_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+    ignore_list = {}
+  }
+
+})
+require('lualine').setup({
+  options = {
+    icons_enabled = true,
+    theme = 'onedark',
+    component_separators = '|',
+    section_separators = '',
+  },
+})
+
+require('nvim_comment').setup()
+require('leap').set_default_keymaps()
+
+
+--vim.cmd([[set iskeyword+=-]])
+--vim.cmd([[set clipboard+=unnamedplus]])
 --set noeb vb t_vb=
 --set backspace=indent,eol,start
 --set spellsuggest=best,5
