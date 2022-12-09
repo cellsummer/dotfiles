@@ -12,7 +12,7 @@ autocmd BufNewFile,BufRead *.vb set ft=vbnet
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Plugin Config
-colorscheme tokyonight-night
+colorscheme vscode
 "colorscheme dracula
 " commenter
 let g:airline#extensions#tabline#enabled      = 1

@@ -46,6 +46,7 @@ return packer.startup(function(use)
   use { "nvim-lua/plenary.nvim" }
   -- colors and themes
   use { 'xiyaowong/nvim-transparent' }
+  use { 'Mofiqul/vscode.nvim'}
   -- use { 'preservim/nerdtree'}
   use { 'joshdick/onedark.vim'}
   use { 'folke/tokyonight.nvim'}
@@ -104,4 +105,3 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
-

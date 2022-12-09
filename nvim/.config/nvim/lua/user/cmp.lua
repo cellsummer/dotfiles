@@ -121,17 +121,7 @@ cmp.setup {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-<<<<<<< HEAD
-  --window.documentation = cmp.config.window.bordered()
-=======
-  window = {
-      documentation = cmp.config.window.bordered(),
-      completion = cmp.config.window.bordered(),
-  },
-  -- documentation = {
-  --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  -- },
->>>>>>> 4a6e23d (nvim 0.7.0)
+  -- window.documentation = cmp.config.window.bordered(),
   experimental = {
     ghost_text = false,
     native_menu = false,

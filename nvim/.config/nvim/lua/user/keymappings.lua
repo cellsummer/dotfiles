@@ -51,8 +51,10 @@ keymap("n", "<C-p>", '"*p', opts)
 
 -- Buffer operation
 keymap("n", "<leader>c", ":bd<CR>", opts)
-keymap("n", "<leader>e", ":NERDTreeToggle<CR>", opts)
-keymap("n", "<leader>tf", ":NERDTreeFind<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>tf", ":NvimTreeFindFile<CR>", opts)
+-- keymap("n", "<leader>e", ":NERDTreeToggle<CR>", opts)
+-- keymap("n", "<leader>tf", ":NERDTreeFind<CR>", opts)
 --keymap("n", "<leader>t", ":VimwikiToggleListItem<CR>", opts)
 
 -- Telescope
