@@ -12,8 +12,8 @@ local on_attach = function(client, bufnr)
 
 	local opts = { noremap = true, silent = true }
 
-	buf_set_keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts) --> jumps to the definition of the symbol under the cursor
-	buf_set_keymap("n", "<leader>lh", ":lua vim.lsp.buf.hover()<CR>", opts) --> information about the symbol under the cursos in a floating window
+	buf_set_keymap("n", "gD", ":lua vim.lsp.buf.definition()<CR>", opts) --> jumps to the definition of the symbol under the cursor
+	buf_set_keymap("n", "<leader>k", ":lua vim.lsp.buf.hover()<CR>", opts) --> information about the symbol under the cursos in a floating window
 	buf_set_keymap("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts) --> lists all the implementations for the symbol under the cursor in the quickfix window
 	buf_set_keymap("n", "<leader>rn", ":lua vim.lsp.util.rename()<CR>", opts) --> renaname old_fname to new_fname
 	buf_set_keymap("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts) --> selects a code action available at the current cursor position
@@ -27,13 +27,15 @@ end
 
 local servers = {
     'pylsp',
+    'sqls',
     'tsserver',
     'sumneko_lua',
-    'vimls'
+    'vimls',
+    'omnisharp-roslyn',
 }
 ---@diagnostic disable-next-line: undefined-global
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 for _, name in pairs(servers) do
 	local server_is_found, server = lsp_installer.get_server(name)
@@ -57,8 +59,23 @@ lsp_installer.on_server_ready(function(server)
         default_opts = vim.tbl_deep_extend("force", sumneko_opts, default_opts)
     end
 
+
 	server:setup(default_opts)
 end)
+
+require'lspconfig'.sqls.setup{
+  settings = {
+    sqls = {
+      connections = {
+        {
+          driver = 'mssql',
+          dataSourceName = 'odbc:server=wenjing-desktop\\sqlexpress;trusted_connection=yes;',
+        },
+        },
+      },
+    },
+  }
+
 
 --local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 --if not null_ls_status_ok then
