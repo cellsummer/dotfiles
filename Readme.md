@@ -1,11 +1,7 @@
-## My Linux dot files
+# Linux dotfiles
 
-### Neovim
+## Maintained using Stow
 
-[How I set up my (neo)vim]( https://cellsummer.github.io/views/2022-02-05-My-NeoVim-Config.html )
-
-
-
-### NeoMutt
-
-### Ranger
+```sh
+stow lvim/
+```
