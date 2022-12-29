@@ -21,4 +21,8 @@ lvim.plugins = {
       vim.cmd('colorscheme rose-pine')
     end
   },
+  -- markdown
+  "mzlogin/vim-markdown-toc",
+  "godlygeek/tabular",
+  -- "preservim/vim-markdown"
 }

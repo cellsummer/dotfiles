@@ -5,6 +5,10 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.insert_mode['jk'] = '<ESC>'
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+
+lvim.keys.normal_mode['j'] = 'gj'
+lvim.keys.normal_mode['k'] = 'gk'
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping

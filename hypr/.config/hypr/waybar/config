@@ -17,9 +17,11 @@
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "fixed-center": true,
+    "fixed-center": false,
     "ipc": true,
 
-    "modules-left": ["custom/menu", "wlr/workspaces", "cpu", "memory", "disk", "custom/updater"],
+    // "modules-left": ["custom/menu", "wlr/workspaces", "cpu", "memory", "disk", "custom/updater"],
+    "modules-left": ["custom/menu", "wlr/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "custom/weather", "network", "battery", "clock", "custom/power"],
 }

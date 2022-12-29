@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+export GTK_THEME=Catppuccin-blue:dark
 
 ## Autostart Programs
 
@@ -14,7 +18,7 @@ done
 /usr/lib/xfce-polkit/xfce-polkit &
 
 # Set wallpaper
-swaybg --output '*' --mode fill --image ~/Pictures/street.jpg &
+swaybg --output '*' --mode fill --image ~/Pictures/empire-night.jpg &
 
 # Apply themes
 ~/.config/hypr/scripts/gtkthemes &
