@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Play songs
+#
+## Files
+CONFIG="$HOME/.config/hypr/wofi/config"
+STYLE="$HOME/.config/hypr/wofi/style.css"
+COLORS="$HOME/.config/hypr/wofi/colors"
+
+## Wofi Command
+wofi_command="wofi -n --show dmenu \
+			--conf ${CONFIG} --style ${STYLE} --color ${COLORS} \
+			--width=1000 --height=500 \
+			--cache-file=/dev/null \
+			--hide-scroll --no-actions \
+			--define=matching=fuzzy"
+
+if [[ ! `pidof mpv` ]]; then
+  file=$(fd . $HOME/Music/  --hidden --maxdepth 5 | ${wofi_command} )
+	mpv "$file"
+else
+	pkill mpv
+fi
