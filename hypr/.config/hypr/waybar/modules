@@ -58,8 +58,8 @@
         },
         "format": "{icon}  {capacity}%",
         "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-full": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-full": " {capacity}%",
         //"format-good": "",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""],
@@ -74,8 +74,8 @@
 		"rotate": 0,
         //"timezone": "America/New_York",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%H:%M}",
-        "format-alt": " {:%a %b %d, %G}"
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%a %b %d, %G}"
     },
 
 	// waybar-cpu

@@ -2,7 +2,12 @@
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.py", },
   -- enable wrap mode for json files only
-  command = "set foldmethod=indent",
+  command = "set foldmethod=indent foldlevel=4",
+})
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.md", },
+  -- enable wrap mode for json files only
+  command = "set spell!",
 })
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },

@@ -9,6 +9,9 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode['j'] = 'gj'
 lvim.keys.normal_mode['k'] = 'gk'
 
+-- telescope keybindings
+lvim.keys.normal_mode["<leader>sl"] = ":Telescope current_buffer_fuzzy_find<cr>"
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
