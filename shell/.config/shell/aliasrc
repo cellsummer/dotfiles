@@ -41,15 +41,17 @@ alias \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
 	e="$EDITOR" \
-  # v="fd --type f --hidden --exclude .git | fzf-tmux -p --reverse --preview 'cat {}' | xargs lvim" \
-  # ii="cd `fd --type d --hidden --exclude .git | fzf-tmux -p --reverse`" \
+	b="$BROWSER" \
 	p="pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
 	z="zathura" \
-    cl="calcurse" \
-    view="nvim -R"
+  cl="calcurse" \
+  view="nvim -R" \
+  up="python3 -m http.server" \
+  glog="git log --graph --decorate --oneline" \
+  gs='git status'
 
 alias \
 	lf="lfub" \

@@ -66,8 +66,8 @@ export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
 # Go environment
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
+# export GOROOT=/usr/local/go
+# export PATH=$PATH:$GOROOT/bin
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
