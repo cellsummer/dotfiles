@@ -27,10 +27,10 @@ swaybg --output '*' --mode fill --image ~/Pictures/empire-night.jpg &
 ~/.config/hypr/scripts/notifications &
 
 # Lauch statusbar (waybar)
-# ~/.config/hypr/scripts/statusbar &
+~/.config/hypr/scripts/statusbar &
 
 # Lauch statusbar (eww)
-~/.config/eww/scripts/launch_bar & 
+# ~/.config/eww/scripts/launch_bar & 
 
 # Start mpd
-# exec mpd &
+exec mpd &

@@ -17,8 +17,8 @@ reload "user.autocommands"
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save.enabled = true
--- lvim.colorscheme = "vscode"
+lvim.format_on_save.enabled = false
+lvim.colorscheme = "tokyonight"
 
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false

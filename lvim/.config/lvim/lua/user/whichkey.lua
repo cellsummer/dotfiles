@@ -8,6 +8,12 @@ lvim.builtin.which_key.mappings["n"] = {
   p = { "<cmd>Telekasten panel<cr>", "Panel" },
   t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
 }
+lvim.builtin.which_key.mappings["m"] = {
+  name = "Mind",
+  m = { "<cmd>MindOpenProject<cr>", "Local Mind" },
+  g = { "<cmd>MindOpenMain<cr>", "Global Mind" },
+  c = { "<cmd>MindClose<cr>", "Close Mind" },
+}
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {

@@ -23,7 +23,7 @@
   },
 
 	"wlr/workspaces": {
-	"format": "{icon}",
+	"format": "{name}",
 	"on-click": "activate",
 	"all-outputs": true,
 	"format-icons": {
@@ -86,7 +86,8 @@
 
 	// waybar-custom
     "custom/menu": {
-         "format": "",
+         "format": "",
+         /* "format": "Ⓜ️", */
          "tooltip": false,
          "on-click": "$HOME/.config/hypr/scripts/menu",
     },
