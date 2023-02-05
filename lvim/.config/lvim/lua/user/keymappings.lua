@@ -5,9 +5,15 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.insert_mode['jk'] = '<ESC>'
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-b>"] = "^"
+lvim.keys.normal_mode["<S-e>"] = "$"
 
 lvim.keys.normal_mode['j'] = 'gj'
 lvim.keys.normal_mode['k'] = 'gk'
+lvim.keys.normal_mode['<C-d>'] = "<C-d>zz"
+lvim.keys.normal_mode['<C-u>'] = "<C-u>zz"
+lvim.keys.normal_mode['n'] = "nzz"
+lvim.keys.normal_mode['N'] = "Nzz"
 
 -- telescope keybindings
 lvim.keys.normal_mode["<leader>sl"] = ":Telescope current_buffer_fuzzy_find<cr>"

@@ -1,7 +1,6 @@
 -- Minimal configuration for neovim
 
 -- Options
-
 local opts = {
   backup = false,
   writebackup = false,
