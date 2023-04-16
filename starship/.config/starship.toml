@@ -1,6 +1,6 @@
 # ~/.config/starship.toml
 format = """
-$username$hostname$directory$git_branch$character
+$username$hostname$directory$git_branch$character$python
 """
 
 [username]

@@ -11,14 +11,18 @@ reload "user.plugins"
 reload "user.options"
 reload "user.keymappings"
 reload "user.lsp"
+reload "user.noice"
+reload "user.karen"
 reload "user.whichkey"
 reload "user.zk"
 reload "user.autocommands"
 
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "everforest"
+
 
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false

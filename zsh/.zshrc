@@ -1,3 +1,6 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+# options
 setopt autocd		# Automatically cd into typed directory.
 setopt interactive_comments
 
@@ -6,12 +9,17 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=$HOME/.zhistory
 
-# Exports
+# Environment variables
+export OPENAI_API_KEY=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
+export FZF_DEFAULT_OPTS='--border=rounded --margin=5% --color=dark --height 100% --reverse  --info=hidden --header-first'
+export PATH
+export EDITOR=lvim
+export BROWSER=open
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+
+# path
 path+=('/Users/wfang/.local/bin')
 path+=('/Users/wfang/.cargo/bin')
-export PATH
-EDITOR=lvim
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -63,13 +71,25 @@ alias \
   gs='git status'
 
 alias \
-	lf="lfub" \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"  \
-  ipython="python3 -m IPython"
+  ipython="python3 -m IPython" \
+  python="python3" \
+  lazy="NVIM_APPNAME=LazyVim nvim" \
+  nvim="NVIM_APPNAME=NvChad nvim"
 
 # fzf
+# find notes
+fn() {
+  local dir
+  dir=$(find ~/Notes -type f -maxdepth 2 2> /dev/null | fzf +m) && nvim "$dir"
+}
+# find repos
+fr() {
+  local dir
+  dir=$(find ~/Repos -type d -maxdepth 1 2> /dev/null | fzf +m) && nvim "$dir"
+}
 # fd - including hidden directories
 fd() {
   local dir
@@ -95,16 +115,23 @@ fo() {
   fi
 }
 
+# Hugo serve to bind to 192.168.X.X instead of default
+hugo_serve() {
+  ipaddress=$(ifconfig | awk '/192.168/ {print $2}')
+  hugo serve -D --bind $ipaddress --baseURL http://$ipaddress
+}
+
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source $(brew --prefix)/Cellar/fzf/0.37.0/shell/key-bindings.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 
 # Bindings
-bindkey "^J" down-line-or-history
-bindkey "^K" up-line-or-history
+# bindkey "^J" down-line-or-history
+# bindkey "^K" up-line-or-history
 # bindkey "^N" history-search-forward # or you can bind it to the down key "^[[B"
 # bindkey "^P" history-search-backward # or you can bind it to Up key "^[[A"
 # autosuggest keybindings
@@ -113,3 +140,8 @@ bindkey '^E' autosuggest-accept
 
 # prompt
 eval "$(starship init zsh)"
+
+source /Users/wfang/.config/broot/launcher/bash/br
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

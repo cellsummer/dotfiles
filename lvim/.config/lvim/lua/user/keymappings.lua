@@ -5,6 +5,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.insert_mode['jk'] = '<ESC>'
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["x"] = ":BufferKill<CR>"
 lvim.keys.normal_mode["<S-b>"] = "^"
 lvim.keys.normal_mode["<S-e>"] = "$"
 
@@ -17,6 +18,20 @@ lvim.keys.normal_mode['N'] = "Nzz"
 
 -- telescope keybindings
 lvim.keys.normal_mode["<leader>sl"] = ":Telescope current_buffer_fuzzy_find<cr>"
+lvim.keys.normal_mode["<leader>ss"] = ":Telescope spell_suggest<cr>"
+
+local opts = { noremap = true, silent = true }
+-- Prevent changes made to text from landing in the default registers
+vim.api.nvim_set_keymap('n', "c", "\"_c", opts)
+vim.api.nvim_set_keymap('n', "C", "\"_C", opts)
+vim.api.nvim_set_keymap('n', "s", "\"_s", opts)
+vim.api.nvim_set_keymap('n', "S", "\"_S", opts)
+
+-- Same as above but for visual mode
+vim.api.nvim_set_keymap('v', "c", "\"_c", opts)
+vim.api.nvim_set_keymap('v', "C", "\"_C", opts)
+vim.api.nvim_set_keymap('v', "s", "\"_s", opts)
+vim.api.nvim_set_keymap('v', "S", "\"_S", opts)
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")

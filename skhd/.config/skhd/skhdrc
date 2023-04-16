@@ -1,11 +1,14 @@
 # launch applications
 alt - return : /Applications/kitty.app/Contents/MacOS/kitty -d ~
+# alt - return : /Applications/Hyper.app/Contents/MacOS/Hyper
 # alt - return : kitty &
-alt - w : open -n -a "Brave Browser"
+alt - w : open -n -a "Arc"
+alt - b : open -n -a "Brave Browser"
 alt - y : open .
 alt - e : ~/.local/bin/edit_config
 alt - r : /Applications/dmenu-mac.app/Contents/MacOS/dmenu-mac
 alt - backspace: ~/.local/bin/powermenu
+alt - n : 
 
 # restart yabai
 shift + alt - r: launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"

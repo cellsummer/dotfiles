@@ -9,6 +9,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
   -- enable wrap mode for json files only
   command = "set spell!",
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.norg", },
+  -- enable wrap mode for json files only
+  command = "set fdls=4 conceallevel=2 spell!",
+})
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
 --   -- enable wrap mode for json files only
