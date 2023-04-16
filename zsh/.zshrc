@@ -10,11 +10,7 @@ SAVEHIST=10000000
 HISTFILE=$HOME/.zhistory
 
 # Environment variables
-export OPENAI_API_KEY=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
 export FZF_DEFAULT_OPTS='--border=rounded --margin=5% --color=dark --height 100% --reverse  --info=hidden --header-first'
-export PATH
-export EDITOR=lvim
-export BROWSER=open
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # path
