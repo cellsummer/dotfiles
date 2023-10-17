@@ -5,7 +5,7 @@ local neorg_mod = {
     opts = {
         load = {
             ["core.defaults"] = {},
-            ["core.norg.concealer"] = {
+            ["core.concealer"] = {
                 config = {
                     icon_preset = "diamond",
                 },
@@ -16,7 +16,7 @@ local neorg_mod = {
                     neorg_leader = ",",
                 },
             },
-            ["core.norg.dirman"] = {
+            ["core.dirman"] = {
                 config = {
                     workspaces = {
                         notes = "~/notes",
@@ -24,7 +24,7 @@ local neorg_mod = {
                     default_workspace = "notes",
                 },
             },
-            ["core.norg.journal"] = {
+            ["core.journal"] = {
                 config = {
                     workspace = "notes",
                     journal_folder = "journal",
@@ -39,6 +39,7 @@ local neorg_mod = {
             },
             ["core.integrations.telescope"] = {},
             ["external.context"] = {},
+            ["core.summary"] = {},
         },
     },
     dependencies = {

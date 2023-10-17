@@ -270,7 +270,8 @@ M.telescope = {
     ["<leader>sl"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
     ["<leader>sb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
     ["<leader>sh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-    ["<leader>sr"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+    ["<leader>so"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+    ["<leader>sr"] = { "<cmd> Telescope registers <CR>", "find registers" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
     ["<leader>ss"] = { "<cmd> Telescope spell_suggest <CR>", "spell suggest" },
 
@@ -298,14 +299,14 @@ M.nvterm = {
       "toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<C-`>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "toggle horizontal term",
     },
 
-    ["<A-v>"] = {
+    ["<C-]>"] = {
       function()
         require("nvterm.terminal").toggle "vertical"
       end,
@@ -322,14 +323,14 @@ M.nvterm = {
       "toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<C-`>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "toggle horizontal term",
     },
 
-    ["<A-v>"] = {
+    ["<C-]>"] = {
       function()
         require("nvterm.terminal").toggle "vertical"
       end,

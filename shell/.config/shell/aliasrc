@@ -1,81 +1,59 @@
 #!/bin/sh
 
-# Use neovim for vim if present.
-[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
-
-# Use $XINITRC variable if file exists.
-[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
-
-# sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
-	alias $command="sudo $command"
-done; unset command
-
-# Verbosity and settings that you pretty much just always are going to want.
-alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	bc="bc -ql" \
-	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
-	yta="yt-dlp -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner" \
-  trans="trans -t zh"
-
-# Colorize commands when possible.
-alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	ll="ls -lhN --color=auto --group-directories-first" \
-	la="ls -lhNa --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi" \
-	ip="ip -color=auto"
-
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
 	g="git" \
-	trem="transmission-remote" \
-	YT="youtube-viewer" \
-	sdn="shutdown -h now" \
 	e="$EDITOR" \
 	b="$BROWSER" \
-	p="pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
-	z="zathura" \
-  cl="calcurse" \
-  view="nvim -R" \
-  up="python3 -m http.server" \
   glog="git log --graph --decorate --oneline" \
-  gs='git status'
+  gs="git status"
 
 alias \
-	lf="lfub" \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
-	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
-  lazy="NVIM_APPNAME=LazyVim nvim"
+  ipython="python3 -m IPython" \
+  python="python3" \
+  lazy="NVIM_APPNAME=LazyVim nvim" \
+  chad="NVIM_APPNAME=NvChad nvim" \
+  nvim="NVIM_APPNAME=AstroVim nvim" 
 
-# fzf shortcut
-
-# fzf and open file in current directory 
-v() {
-  file=$(fd --type f --hidden --exclude .git | fzf )
-  [ -f "$file" ] && $EDITOR "$file"
+# fzf
+# find notes
+fn() {
+  local dir
+  dir=$(find ~/Notes -type f -maxdepth 2 2> /dev/null | fzf +m) && nvim "$dir"
 }
-# fzf and cd into directory
-ff() {
-  dir=$(fd --type d --hidden | fzf )
-  [ -d $dir ] && cd $dir && ls
+# find repos
+fr() {
+  local dir
+  dir=$(find ~/Repos -type d -maxdepth 1 2> /dev/null | fzf +m) && nvim "$dir"
+}
+# fd - including hidden directories
+fd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
 }
 
-# fzf and open configs
-fc() {
-  file=$(fd . $HOME/.config/ $HOME/dotfiles/ --type f --hidden | fzf )
-  [ -f "$file" ] && $EDITOR "$file"
+# Modified version where you can press
+#   - CTRL-O to open with `open` command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() {
+  IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+  fi
 }
 
+# Hugo serve to bind to 192.168.X.X instead of default
+hugo_serve() {
+  ipaddress=$(ifconfig | awk '/192.168/ {print $2}')
+  hugo serve -D --bind $ipaddress --baseURL http://$ipaddress
+}

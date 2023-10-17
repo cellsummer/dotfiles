@@ -19,6 +19,7 @@ lvim.keys.normal_mode['N'] = "Nzz"
 -- telescope keybindings
 lvim.keys.normal_mode["<leader>sl"] = ":Telescope current_buffer_fuzzy_find<cr>"
 lvim.keys.normal_mode["<leader>ss"] = ":Telescope spell_suggest<cr>"
+lvim.keys.normal_mode["<leader>so"] = ":Telescope oldfiles<cr>"
 
 local opts = { noremap = true, silent = true }
 -- Prevent changes made to text from landing in the default registers

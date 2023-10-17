@@ -5,16 +5,24 @@ alias \
 	e="$EDITOR" \
 	b="$BROWSER" \
   glog="git log --graph --decorate --oneline" \
-  gs="git status"
+  gs="git status" \
+  lps="ps ax | fzf"
 
 alias \
   ipython="python3 -m IPython" \
   python="python3" \
+  pip="pip3" \
   lazy="NVIM_APPNAME=LazyVim nvim" \
-  chad="NVIM_APPNAME=NvChad nvim" \
-  nvim="NVIM_APPNAME=AstroVim nvim" 
+  chad="NVIM_APPNAME=NvChad nvim"
+  # nvim="NVIM_APPNAME=AstroVim nvim" 
 
 # fzf
+# launch application
+ap() {
+  open -a "$(find /Applications -name '*app' -maxdepth 1 | sed 's|/Applications/||;s|\.app||' | fzf --preview=)"
+}
+
+
 # find notes
 fn() {
   local dir
@@ -41,7 +49,7 @@ fe() {
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
 #   - CTRL-E or Enter key to open with the $EDITOR
-fo() {
+f() {
   IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
   key=$(head -1 <<< "$out")
   file=$(head -2 <<< "$out" | tail -1)
