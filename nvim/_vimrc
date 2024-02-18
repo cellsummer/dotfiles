@@ -11,6 +11,7 @@
 " Sections:
 "    -> General
 "    -> VIM user interface
+"    -> netRW Settings
 "    -> Colors and Fonts
 "    -> Files and backups
 "    -> Text, tab and indent related
@@ -35,6 +36,7 @@ set history=500
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+set omnifunc=syntaxcomplete#Complete
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -115,7 +117,7 @@ set incsearch
 set lazyredraw
 
 " For regular expressions turn magic on
-set magic
+set nomagic
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -137,6 +139,19 @@ endif
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+" Split direction
+set splitbelow
+set splitright
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => netRW settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+
+nnoremap <leader>e <cmd>:Lex<cr>
+nnoremap <leader>E <cmd>:E<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -222,7 +237,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+map <silent> <BS> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -235,6 +250,7 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
+map <C-p> :bu<space><tab>
 
 map <S-l> :bnext<cr>
 map <S-h> :bprevious<cr>
