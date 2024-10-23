@@ -1,5 +1,15 @@
 return {
   {
+    "vidocqh/data-viewer.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "kkharji/sqlite.lua", -- Optional, sqlite support
+    },
+    lazy = false,
+  },
+  -- better recent files
+  {
     "nvim-telescope/telescope-frecency.nvim",
     config = function() require("telescope").load_extension "frecency" end,
     lazy = false,
@@ -8,7 +18,7 @@ return {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -25,7 +35,7 @@ return {
   -- vim table mode
   { "dhruvasagar/vim-table-mode", lazy = false },
   -- Aasim-A/scrollEOF.nvim
-  { "Aasim-A/scrollEOF.nvim",     lazy = false, opts = {} },
+  { "Aasim-A/scrollEOF.nvim", lazy = false, opts = {} },
   -- neorg: note taking
   {
     "nvim-neorg/neorg",
@@ -34,17 +44,13 @@ return {
     build = ":Neorg sync-parsers",
     opts = function() return require "plugins.configs.neorg" end,
     dependencies = {
+      { "pysan3/neorg-templates", dependencies = { "L3MON4D3/LuaSnip" } }, -- ADD THIS LINE
       { "nvim-neorg/neorg-telescope" },
       -- { "max397574/neorg-context" },
       { "nvim-lua/plenary.nvim" },
     },
   },
   { "tpope/vim-surround", lazy = false },
-  {
-    "arturgoms/moonbow.nvim",
-    install = { colorscheme = { "moonbow" } },
-    lazy = false,
-  },
 
   -- noice: better UI
   {

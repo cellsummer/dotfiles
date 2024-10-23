@@ -6,12 +6,13 @@ alias \
 	g="git" \
 	e="$EDITOR" \
 	b="$BROWSER" \
-  glog="git log --graph --decorate --oneline" \
-  gs="git status"
+  # glog="git log --graph --decorate --oneline" \
+  # gs="git status"
 
 alias \
   ipython="python3 -m IPython" \
-  python="python3" \
+  ssh="kitten ssh" \
+  # python="python3" \
   lazy="NVIM_APPNAME=LazyVim nvim" \
   chad="NVIM_APPNAME=NvChad nvim" \
   nvim="NVIM_APPNAME=AstroVim nvim" 

@@ -1,5 +1,6 @@
 local opts = {
   load = {
+    ["external.templates"] = {},
     ["core.defaults"] = {}, -- Loads default behaviour
     ["core.pivot"] = {},
     ["core.highlights"] = {
@@ -19,7 +20,7 @@ local opts = {
           -- Remap unbinds the current key then rebinds it to have a different action
           -- associated with it.
           -- The following is the equivalent of the `unmap` and `map` calls you saw above:
-          -- keybinds.remap("norg", "n", "gtd", "<cmd>echo 'Hello!'<CR>")
+          keybinds.remap("norg", "n", "g0", "<cmd>Neorg toc split<CR>")
           keybinds.remap("norg", "n", "<leader>nt", "<cmd>Neorg toc qflist<CR>")
           keybinds.remap("norg", "n", "<leader>t", "<cmd>Neorg toc<CR>")
 
@@ -48,7 +49,7 @@ local opts = {
           },
         },
       },
-    },                  -- Adds pretty icons to your documents
+    }, -- Adds pretty icons to your documents
     ["core.dirman"] = { -- Manages Neorg workspaces
       config = {
         workspaces = { notes = "~/Notes" },
@@ -78,10 +79,10 @@ local opts = {
         type = "empty",
         strategy = "default",
         template = {
-          { "title",       "" },
+          { "title", "" },
           { "description", "" },
-          { "authors",     "Wenjing Fang" },
-          { "categories",  "[notes]" },
+          { "authors", "Wenjing Fang" },
+          { "categories", "[notes]" },
           {
             "created",
             function() return os.date "%Y-%m-%d" end,

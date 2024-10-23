@@ -4,37 +4,56 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          off
-yabai -m config window_origin_display        default
-yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
-yabai -m config window_shadow                on
-yabai -m config window_opacity               off
-yabai -m config window_opacity_duration      0.0
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.80
-yabai -m config window_border                on
-yabai -m config window_border_width          4
-yabai -m config active_window_border_color   0xff26A65B #0xff775759
-yabai -m config normal_window_border_color   0xff555555
-yabai -m config insert_feedback_color        0xffd75f5f
-yabai -m config split_ratio                  0.60
-yabai -m config auto_balance                 off
-yabai -m config mouse_modifier               fn
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
-yabai -m config mouse_drop_action            swap
+# yabai -m config mouse_follows_focus off
+# yabai -m config focus_follows_mouse off
+yabai -m config window_origin_display default
+# yabai -m config window_placement second_child
+yabai -m config window_topmost off
+# yabai -m config window_shadow on
+# yabai -m config window_opacity on
+# yabai -m config window_opacity_duration 0.0
+# yabai -m config active_window_opacity 1.0
+# yabai -m config normal_window_opacity 0.80
+# yabai -m config window_border on
+# yabai -m config window_border_width 4
+# yabai -m config active_window_border_color 0xff26A65B #0xff775759
+# yabai -m config normal_window_border_color 0xff555555
+# yabai -m config insert_feedback_color 0xffd75f5f
+# yabai -m config split_ratio 0.60
+# yabai -m config auto_balance off
+# yabai -m config mouse_modifier fn
+# yabai -m config mouse_action1 move
+# yabai -m config mouse_action2 resize
+# yabai -m config mouse_drop_action swap
+
+yabai -m config mouse_follows_focus off \
+	focus_follows_mouse off \
+	window_zoom_persist off \
+	window_placement second_child \
+	window_shadow float \
+	window_opacity on \
+	window_opacity_duration 0.2 \
+	active_window_opacity 1.0 \
+	normal_window_opacity 0.8 \
+	window_animation_duration 0.5 \
+	window_animation_easing ease_out_quint \
+	insert_feedback_color 0xff9dd274 \
+	split_ratio 0.50 \
+	auto_balance off k
+mouse_modifier fn \
+	mouse_action1 move \
+	mouse_action2 resize \
+	mouse_drop_action swap
 
 # general space settings
-yabai -m config layout                       bsp
-yabai -m config top_padding                  5
-yabai -m config bottom_padding               5
-yabai -m config left_padding                 5
+yabai -m config layout bsp
+yabai -m config top_padding 5
+yabai -m config bottom_padding 5
+yabai -m config left_padding 5
 # NOTE: for OBS floating head
 # yabai -m config left_padding                 450
-yabai -m config right_padding                5
-yabai -m config window_gap                   5
+yabai -m config right_padding 5
+yabai -m config window_gap 5
 
 # apps to not manage (ignore)
 yabai -m rule --add app="^System Settings$" manage=off
@@ -50,10 +69,21 @@ yabai -m rule --add app="^Music$" manage=off
 yabai -m rule --add app="^Citrix Viewer$" manage=off
 yabai -m rule --add app="^Citrix Workspace$" manage=off
 yabai -m rule --add app="^DBeaver$" manage=off
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
 
+# Override default layout for space 2 only
+yabai -m config --space 3 layout float
+yabai -m config --space 4 layout float
 
 # killall limelight &> /dev/null
 # limelight &> /dev/null &
+# add window borders
+# borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
+borders active_color=0xff26A65B inactive_color=0xff555555 width=5.0 &
 
 echo "yabai configuration loaded.."
 
