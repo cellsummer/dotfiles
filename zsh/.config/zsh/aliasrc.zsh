@@ -42,8 +42,7 @@ fr() {
   dir=$(find ~/Repos -type d -maxdepth 1 2> /dev/null | fzf +m) && nvim "$dir"
 }
 # fd - including hidden directories
-fd() {
-  local dir
+fdir() { local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 # fe [FUZZY PATTERN] - Open the selected file with the default editor

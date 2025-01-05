@@ -1,5 +1,6 @@
 # launch applications
 alt - return : /Applications/kitty.app/Contents/MacOS/kitty -d ~
+# alt - return : open -n -a "Ghostty"
 # alt - n : /Applications/kitty.app/Contents/MacOS/kitty -d ~ lf
 # alt - m : /Applications/iTerm.app/Contents/MacOS/iTerm2 -d ~ termusic
 alt - m : open -a iTerm.app ~/.local/bin/termusic
@@ -10,7 +11,7 @@ alt - w : open -n -a "Brave Browser"
 alt - y : open .
 alt - r : /Applications/dmenu-mac.app/Contents/MacOS/dmenu-mac
 # alt - r : open -a "$(find /Applications -name '*app' -maxdepth 1 | sed 's|/Applications/||;s|\.app||' | fzf --preview=)"
-alt - e : "${HOME}"/.local/bin/edit_config
+alt - e : open Desktop
 # alt - m : "${HOME}"/.local/bin/launch_termusic
 alt - backspace:  "${HOME}"/.local/bin/powermenu
 # screenshot

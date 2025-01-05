@@ -31,4 +31,15 @@ export PYENV_ROOT="$HOME/.pyenv"
 export DUCKDB_PATH=$HOME/.local/bin/duckdb
 export GOPATH=$HOME/.local/go
 export PATH=$GOPATH/bin:$PATH
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/wfang/.zsh/completions:"* ]]; then export FPATH="/Users/wfang/.zsh/completions:$FPATH"; fi
+
+# pnpm
+export PNPM_HOME="/Users/wfang/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+. "/Users/wfang/.deno/env"
