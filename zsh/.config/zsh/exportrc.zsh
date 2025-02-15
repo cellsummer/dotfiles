@@ -2,18 +2,13 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH
 export EDITOR=nvim
-export BROWSER=open
 export FZF_DEFAULT_OPTS='
+  --color=bg+:#202020,bg:#151515,spinner:#ffafaf,hl:#ff8700
+  --color=fg:#dddddd,header:#ffaf5f,info:#ff8700,pointer:#ffafaf
+  --color=marker:#ff5f87,fg+:#c6b6ee,prompt:#ff8700,hl+:#ff8700
+  --color=border:#151515
+  --multi
   --ansi
-  --border=rounded 
-  --margin=5% 
-  --color=dark 
-  --height 100% 
-  --reverse 
-  --info=hidden 
-  --header-first 
-  --bind "ctrl-k:execute(nvim {})+accept"
-  --bind "ctrl-o:become(vim {})"
 '
 # export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files'
 export FZF_DEFAULT_COMMAND='
