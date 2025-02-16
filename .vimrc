@@ -29,13 +29,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"" Plugins """""
 call plug#begin()
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
 Plug 'lilydjwg/colorizer'
 Plug 'sainnhe/gruvbox-material'
 Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/vim-color-spring-night'
 
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " => General
@@ -45,7 +48,7 @@ set history=500
 set noshellslash
 
 " VIM cursor shape
-let &t_SI = "\e[4 q"
+let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
 " Enable filetype plugins
@@ -239,7 +242,7 @@ endif
 set encoding=utf8
 
 " Use Unix as the standard file type
-set fileformats=dos
+set fileformats=unix
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -308,19 +311,14 @@ tnoremap <Esc> <C-\><C-n>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => terminal mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>t :term pwsh --nologo<cr>
-nnoremap <leader>c :term cmd<cr>
-nnoremap <leader>b :term bash<cr>
-tnoremap <leader>t <c-w>:term pwsh --nologo ++close<cr>
+nnoremap <leader>t :term bash<cr>
+" nnoremap <leader>c :term cmd<cr>
+" nnoremap <leader>b :term bash<cr>
+" tnoremap <leader>t <c-w>:term pwsh --nologo ++close<cr>
 
-" import autoload 'zeef.vim'
-
-" zeef
-nnoremap <leader>so :call zeef#Args(v:oldfiles)<cr>
-nnoremap <leader>sb :call zeef#BufferSwitcher()<cr>
-nnoremap <leader>sf :call zeef#Files()<cr>
-nnoremap <leader>su :call zeef#Files("c:/users/wfang/bin/")<cr>
-nnoremap <leader>sc :call zeef#ColorSchemeSwitcher()<cr>
+nnoremap <leader>so <cmd>History<cr>
+nnoremap <leader>sb <cmd>Buffers<cr>
+nnoremap <leader>sf <cmd>Files<cr>
 
 
 " Disable highlight when <leader><cr> is pressed
@@ -467,6 +465,8 @@ map <leader>pp :setlocal paste!<cr>
 
 " Paste from clipboard
 set clipboard=unnamed
+
+
 
 """"""""
 highlight ExtraWhiteSpace ctermbg=red guibg=red
