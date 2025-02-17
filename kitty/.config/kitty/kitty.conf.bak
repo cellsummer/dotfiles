@@ -1,0 +1,60 @@
+# User Config
+# font_family ZedMono Nerd Font 
+font_family FiraCode Nerd Font
+# font_family VictorMono Nerd Font
+# italic_font FiraCode Nerd Font Italic
+# font_family Pragmasevka Nerd Font
+# font_family Meslo LG M DZ Regular Nerd Font
+# font_family SauceCodePro Nerd Font
+# 
+macos_hide_titlebar yes
+font_size 14.0
+background_opacity 0.95
+editor nvim
+
+# Keybindings
+map super+enter no_op
+map super+i kitten kitty_grab/grab.py
+
+# Colorscheme
+macos_titlebar_color background
+
+foreground           #d4d4d4
+background           #1e1e1e
+selection_foreground #1e1e1e
+selection_background #d7ba7d
+url_color            #4ec9b0
+cursor               #d4d4d4
+cursor_text_color    #1e1e1e
+
+# black
+color0 #000000
+color8 #808080
+
+# red
+color1 #d16969
+color9 #ce9178
+
+# green
+color2  #608b4e
+color10 #b5cea8
+
+# yellow
+color3  #d7ba7d
+color11 #dcdcaa
+
+# blue
+color4  #569cd6
+color12 #9cdcfe
+
+# magenta
+color5  #c586c0
+color13 #c586c0
+
+# cyan
+color6  #4ec9b0
+color14 #4ec9b0
+
+# white
+color7  #d4d4d4
+color15 #ffffff
