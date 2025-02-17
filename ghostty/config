@@ -1,0 +1,55 @@
+theme = "Jellybeans"
+
+font-family = BerkeleyMono Nerd Font
+font-family-bold = BerkeleyMono Nerd Font Bold
+font-family-italic = Berkeley Mono Italic
+font-family-bold-italic = Berkeley Mono Bold Italic
+font-size = 14
+font-thicken
+
+background-opacity = 0.85
+background-blur-radius = 20
+
+confirm-close-surface = false
+
+shell-integration-features = no-cursor,sudo,no-title
+# custom-shader = bloom025.glsl
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 1.5
+macos-titlebar-style = transparent
+window-colorspace = "display-p3"
+window-padding-x = 2
+window-padding-y = 2
+# window-margin = 2
+unfocused-split-opacity = 0.9
+
+# keybindings
+keybind = ctrl+k>r=reload_config
+keybind = ctrl+k>x=close_surface
+keybind = ctrl+k>n=new_window
+keybind = ctrl+k>t=new_tab
+
+# tabs
+keybind = ctrl+k>shift+l=next_tab
+keybind = ctrl+k>shift+h=previous_tab
+keybind = ctrl+k>1=goto_tab:1
+keybind = ctrl+k>2=goto_tab:2
+keybind = ctrl+k>3=goto_tab:3
+keybind = ctrl+k>4=goto_tab:4
+
+# split
+keybind = ctrl+k>\=new_split:right
+keybind = ctrl+k>-=new_split:down
+
+keybind = ctrl+k>j=goto_split:bottom
+keybind = ctrl+k>k=goto_split:top
+keybind = ctrl+k>h=goto_split:left
+keybind = ctrl+k>l=goto_split:right
+
+keybind = ctrl+k>z=toggle_split_zoom
+keybind = ctrl+k>e=equalize_splits
+
+keybind = cmd+s=toggle_quick_terminal
+
+quick-terminal-animation-duration = 0.08
