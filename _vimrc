@@ -1,10 +1,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
+
 "       Amir Salihefendic - @amix3k
 "
 " Awesome_version: "       Get this config, nice color schemes and lots of plugins!
 "
-"       Install the awesome version from:
+"       Install the awesome veron from:
 "
 "           https://github.com/amix/vimrc
 "
@@ -30,12 +30,13 @@
 """"" Plugins """""
 call plug#begin()
 Plug 'lilydjwg/colorizer'
-Plug 'sainnhe/gruvbox-material'
 Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/vim-color-spring-night'
+Plug 'junegunn/vim-easy-align'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " => General
@@ -43,9 +44,10 @@ call plug#end()
 " Sets how many lines of history VIM has to remember
 set history=500
 set noshellslash
+set clipboard=unnamed
 
 " VIM cursor shape
-let &t_SI = "\e[4 q"
+let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
 " Enable filetype plugins
@@ -53,6 +55,7 @@ filetype plugin on
 filetype indent on
 
 set omnifunc=syntaxcomplete#Complete
+set termwinkey=<C-x>
 " Set to auto read when a file is changed from the outside
 set autoread
 au FocusGained,BufEnter * silent! checktime
@@ -61,9 +64,6 @@ au FocusGained,BufEnter * silent! checktime
 " like <leader>w saves the current file
 let mapleader = " "
 let maplocalleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " I don't use x/s
 nmap x :Bclose<cr>:tabclose<cr>gT
@@ -84,7 +84,7 @@ set nu
 "set cursorline
 
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set so=20
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
@@ -162,7 +162,7 @@ set splitbelow
 set splitright
 
 " windows only
-" set sh=pwsh.exe
+" set sh=powershell.exe
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,7 +173,7 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
 
 nnoremap <leader>e <cmd>:Lex<cr>
-nnoremap <leader>E <cmd>:E<cr>
+nnoremap <leader>ff <cmd>:Vex<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -206,7 +206,8 @@ let g:gruvbox_material_background = 'medium'
 " For better performance
 let g:gruvbox_material_better_performance = 1
 
-colorscheme spring-night
+" colorscheme spring-night
+colorscheme habamax
 
 " Terminal mode colors
 let g:terminal_ansi_colors = [
@@ -215,11 +216,11 @@ let g:terminal_ansi_colors = [
   \'#fb4934', '#b8bb26', '#fabd2f', '#83a598',
   \'#d3869b', '#8ec07c', '#fe8019', '#FBF1C7' ]
 
-highlight Terminal guibg='#282828'
-highlight Terminal guifg='#ebdbb2'
+" highlight Terminal guibg='#282828'
+" highlight Terminal guifg='#ebdbb2'
 
 set background=dark
-highlight Visual guifg=Black guibg=LightBlue
+" highlight Visual guifg=Black guibg=LightBlue
 " highlight SpellBad guifg=White guibg=DarkRed
 " highlight Search guifg=White guibg=DarkRed
 " highlight Visual guifg=White guibg=DarkRed
@@ -227,11 +228,11 @@ highlight Visual guifg=Black guibg=LightBlue
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
+    set guioptions=
     set t_Co=256
     set guitablabel=%M\ %t
-    set guifont=Cascadia_Mono:h10
+    " set guifont=Cascadia_Mono:h10
+    set guifont=Berkeley_Mono_Medium_Condensed:h11:W500:cANSI:qDRAFT
 endif
 
 
@@ -308,10 +309,10 @@ tnoremap <Esc> <C-\><C-n>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => terminal mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>t :term pwsh --nologo<cr>
-nnoremap <leader>c :term cmd<cr>
-nnoremap <leader>b :term bash<cr>
-tnoremap <leader>t <c-w>:term pwsh --nologo ++close<cr>
+nnoremap <leader>tp :vert term pwsh --nologo -WorkingDirectory ~<cr>
+nnoremap <leader>td :vert term cmd<cr>
+nnoremap <leader>tb :vert term bash<cr>
+tnoremap <leader>tt <c-w>:term pwsh --nologo ++close<cr>
 
 " import autoload 'zeef.vim'
 
@@ -331,6 +332,11 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+tnoremap <C-j> <C-X>j
+tnoremap <C-k> <C-X>k
+tnoremap <C-h> <C-X>h
+tnoremap <C-l> <C-X>l
+
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
@@ -354,6 +360,10 @@ inoremap <c-space> <c-x><c-o>
 
 """"insert today's date""""
 inoremap <F4> <C-r>=strftime('%F')<CR>
+
+" ruff tools
+nnoremap <silent> <leader>rf :w<CR>:!ruff format %<CR><CR>
+nnoremap <silent> <leader>rc :w<CR>:!ruff check % --fix<CR>
 
 " Useful mappings for managing tabs
 " map <leader>tn :tabnew<cr>
@@ -391,12 +401,59 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-" Always show the status line
+" status bar colors
+au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta
+au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
+hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
+
+" Status line
+" default: set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
+
+" Status Line Custom
+let g:currentmode={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'Normal·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ '^V' : 'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
 set laststatus=2
+set noshowmode
+set statusline=
+set statusline+=%0*\ %n\                                 " Buffer number
+set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
+set statusline+=%3*│                                     " Separator
+set statusline+=%2*\ %Y\                                 " FileType
+set statusline+=%3*│                                     " Separator
+set statusline+=\ (%{&ff})                               " FileFormat (dos/unix..)
+set statusline+=%=                                       " Right Side
+set statusline+=%2*\ c:\ %02v\                           " Colomn number
+set statusline+=%3*│                                     " Separator
+set statusline+=%1*\ r:\ %02l/%L\ (%3p%%)\               " Line number / total lines, percentage of document
+set statusline+=%3*│                                     " Separator
+set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}     " Encoding
+set statusline+=%3*│                                     " Separator
+set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
 
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
+hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
+hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
+hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030
+hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -457,16 +514,12 @@ map <leader>ss :setlocal spell!<cr>
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+map <leader>n :e ~/buffer<cr>
 
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" Paste from clipboard
-set clipboard=unnamed
 
 """"""""
 highlight ExtraWhiteSpace ctermbg=red guibg=red
@@ -527,9 +580,180 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+
 """"""Plugin configurations"""""
 "let g:fzf_vim= {}
 "let g:fzf_vim.preview_window = []
 "" Default: Use quickfix list
 "let g:fzf_vim.listproc = { list -> fzf#vim#listproc#quickfix(list) }
 let g:markdown_fenced_languages = ['html', 'python', 'sh', 'sql', 'powershell=sh']
+
+" Easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+"
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+""" CoC configurations """
+" https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
+
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" utf-8 byte sequence
+set encoding=utf-8
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <C-n>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent><nowait> [g <Plug>(coc-diagnostic-prev)
+nmap <silent><nowait> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent><nowait> gd <Plug>(coc-definition)
+nmap <silent><nowait> gy <Plug>(coc-type-definition)
+nmap <silent><nowait> gi <Plug>(coc-implementation)
+nmap <silent><nowait> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+nmap <leader>lr <Plug>(coc-rename)
+
+" Formatting selected code
+xmap <leader>lf  <Plug>(coc-format-selected)
+nmap <leader>lf  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s)
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+augroup end
+
+" Applying code actions to the selected code block
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> to scroll float windows/popups
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges
+" Requires 'textDocument/selectionRange' support of language server
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics
+nnoremap <silent><nowait> <space>ca  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent><nowait> <space>ce  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent><nowait> <space>co  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent><nowait> <space>cs  :<C-u>CocList -I symbols<cr>
+" Do default action for next item
+nnoremap <silent><nowait> <space>cj  :<C-u>CocNext<CR>
+" Do default action for previous item
+nnoremap <silent><nowait> <space>ck  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
