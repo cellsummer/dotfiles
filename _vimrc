@@ -1,12 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"       Amir Salihefendic - @amix3k
-"
-" Awesome_version: "       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome veron from:
-"
-"           https://github.com/amix/vimrc
 "
 " Sections:
 "    -> General
@@ -29,32 +20,33 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"" Plugins """""
 call plug#begin()
+Plug 'google/vim-searchindex'
+Plug 'junegunn/vim-easy-align'
 Plug 'lilydjwg/colorizer'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/vim-color-spring-night'
-Plug 'junegunn/vim-easy-align'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 call plug#end()
 
-" => General
+" => Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
 set noshellslash
 set clipboard=unnamed
 
-" VIM cursor shape
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
 
+
+" Use syntax completion as default
 set omnifunc=syntaxcomplete#Complete
+
+"Enables C-w in the terminal mode
 set termwinkey=<C-x>
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -65,28 +57,24 @@ au FocusGained,BufEnter * silent! checktime
 let mapleader = " "
 let maplocalleader = ","
 
+" VIM cursor shape
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 " I don't use x/s
 nmap x :Bclose<cr>:tabclose<cr>gT
 nmap s <Nop>
 
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Addtional options
 set showcmd
 set rnu
 set nu
-"set cursorline
+set cursorline
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=20
 
-" Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
@@ -156,6 +144,7 @@ endif
 
 " Add a bit extra margin to the left
 set foldcolumn=1
+set foldmethod=indent
 
 " Split direction
 set splitbelow
@@ -216,23 +205,16 @@ let g:terminal_ansi_colors = [
   \'#fb4934', '#b8bb26', '#fabd2f', '#83a598',
   \'#d3869b', '#8ec07c', '#fe8019', '#FBF1C7' ]
 
-" highlight Terminal guibg='#282828'
-" highlight Terminal guifg='#ebdbb2'
 
 set background=dark
-" highlight Visual guifg=Black guibg=LightBlue
-" highlight SpellBad guifg=White guibg=DarkRed
-" highlight Search guifg=White guibg=DarkRed
-" highlight Visual guifg=White guibg=DarkRed
-" highlight Search guifg=White guibg=DarkBlue
 
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions=
     set t_Co=256
     set guitablabel=%M\ %t
-    " set guifont=Cascadia_Mono:h10
-    set guifont=Berkeley_Mono_Medium_Condensed:h11:W500:cANSI:qDRAFT
+    set guifont=Cascadia_Mono:h10
+    " set guifont=Berkeley_Mono_Medium_Condensed:h11:W500:cANSI:qDRAFT
 endif
 
 
@@ -269,9 +251,9 @@ set tabstop=4
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set autoindent
+set smartindent
+set wrap
 
 
 """"""""""""""""""""""""""""""
@@ -458,11 +440,6 @@ hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-" browse oldfiles
-" nmap <leader>so :bro ol<cr>
 "
 " q to close readonly buffers
 nnoremap <expr> q (&readonly ? ':close!<CR>' : 'q')
@@ -581,7 +558,9 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 
-""""""Plugin configurations"""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:fzf_vim= {}
 "let g:fzf_vim.preview_window = []
 "" Default: Use quickfix list
@@ -596,7 +575,9 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-""" CoC configurations """
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Coc configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
 
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
@@ -627,8 +608,11 @@ inoremap <expr><C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"This expression seems to be responsible for coc formatting on enter
+inoremap <silent><expr> <cr> "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"I this just says autocomplete with the first option if pop up menu is open.
+"If it is not open, just do a regular tab.
+inoremap <silent><expr> <tab> pumvisible() ? coc#pum#confirm() : "\<C-g>u\<tab>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -757,3 +741,5 @@ nnoremap <silent><nowait> <space>cj  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
+
+let g:pyindent_open_paren = 0
