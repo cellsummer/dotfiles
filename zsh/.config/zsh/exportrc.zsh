@@ -9,6 +9,7 @@ export FZF_DEFAULT_OPTS='
   --color=border:#151515
   --multi
   --ansi
+  --reverse
 '
 # export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files'
 export FZF_DEFAULT_COMMAND='
