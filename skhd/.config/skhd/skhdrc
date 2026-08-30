@@ -1,5 +1,6 @@
 # launch applications
-alt - return : /Applications/kitty.app/Contents/MacOS/kitty -d ~
+alt - return : /Applications/Ghostty.app/Contents/MacOS/ghostty --working-directory="$HOME"
+# alt - return : /Applications/kitty.app/Contents/MacOS/kitty -d ~
 # alt - return : open -n -a "Ghostty"
 # alt - n : /Applications/kitty.app/Contents/MacOS/kitty -d ~ lf
 # alt - m : /Applications/iTerm.app/Contents/MacOS/iTerm2 -d ~ termusic

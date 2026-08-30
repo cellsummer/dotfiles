@@ -1,0 +1,91 @@
+theme = "Jellybeans"
+
+# Ghostty derives LANG/LANGUAGE from the macOS AppleLanguages list, which
+# includes zh-Hans -> LANGUAGE=en_US.UTF-8:zh_CN.UTF-8. gettext skips en_US
+# (no catalog) and falls through to zh_CN, so git etc. print Chinese.
+# Pin both so CLI tools stay in English.
+env = LANG=en_US.UTF-8
+env = LANGUAGE=en_US:en
+
+font-family = BerkeleyMono Nerd Font
+# font-family-bold = BerkeleyMono Nerd Font Bold
+# font-family-italic = Berkeley Mono Italic
+# font-family-bold-italic = Berkeley Mono Bold Italic
+font-size = 14
+font-thicken
+
+background-opacity = 0.85
+background-blur-radius = 20
+
+confirm-close-surface = false
+
+shell-integration-features = no-cursor,sudo,no-title
+# custom-shader = bloom025.glsl
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 1.5
+macos-titlebar-style = transparent
+window-colorspace = "display-p3"
+# window-margin = 2
+unfocused-split-opacity = 0.9
+
+# keybindings
+keybind = ctrl+k>r=reload_config
+keybind = ctrl+k>x=close_surface
+keybind = ctrl+k>q=close_surface
+keybind = ctrl+k>n=new_window
+keybind = ctrl+k>t=new_tab
+
+# tabs
+keybind = ctrl+k>shift+l=next_tab
+keybind = ctrl+k>shift+h=previous_tab
+keybind = ctrl+k>1=goto_tab:1
+keybind = ctrl+k>2=goto_tab:2
+keybind = ctrl+k>3=goto_tab:3
+keybind = ctrl+k>4=goto_tab:4
+
+# split
+keybind = ctrl+k>\=new_split:right
+keybind = cmd+enter=new_split:right
+keybind = cmd+shift+-=new_split:down
+keybind = ctrl+k>-=new_split:down
+
+keybind = ctrl+k>j=goto_split:bottom
+keybind = ctrl+k>k=goto_split:top
+keybind = ctrl+k>h=goto_split:left
+keybind = ctrl+k>l=goto_split:right
+
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+keybind = cmd+h=goto_split:left
+keybind = cmd+l=goto_split:right
+
+keybind = cmd+m=toggle_split_zoom
+keybind = ctrl+k>z=toggle_split_zoom
+keybind = ctrl+k>e=equalize_splits
+
+keybind = cmd+s=toggle_quick_terminal
+
+quick-terminal-animation-duration = 0.08
+
+# --- Window Padding & Gaps ---
+# Controls the gap/padding between text and window edges
+window-padding-x = 5
+window-padding-y = 5
+
+# Keeps padding perfectly balanced when resizing split windows
+window-padding-balance = true
+
+# Prevents raw gap spaces from showing if terminal cells don't fit perfectly
+window-padding-color = extend-always
+
+# --- Split Dividers & Borders ---
+# Sets the color of the thin line separating your split panes
+split-divider-color = #4c566a
+
+# Optional: Dims the unfocused splits to emphasize your active pane
+unfocused-split-opacity = 0.50
+
+# --- Window Decorations (Outer Borders) ---
+# Removes native OS titlebars for a clean, completely borderless canvas
+window-decoration = false
